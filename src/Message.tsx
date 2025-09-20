@@ -6,7 +6,7 @@ function Message(){
     const name = 'Bartek';
     if(name)
         return <h1>Hello {name}</h1>
-    return "Hello World"
+    return <h1>Hello World</h1>
 }
 
 export default Message;
