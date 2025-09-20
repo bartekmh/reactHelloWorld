@@ -123,18 +123,25 @@ Each release automatically includes:
 
 ### GitHub Pages Setup
 
-To enable GitHub Pages:
+The workflow includes two deployment methods:
 
+#### Method 1: GitHub Actions Pages (Recommended)
 1. Go to your repository **Settings**
 2. Scroll down to **Pages** section
 3. Under **Source**, select **GitHub Actions**
-4. Create a new environment called `github-pages` (if not exists)
-5. The workflow will automatically deploy to GitHub Pages when triggered
+4. The workflow will automatically deploy when pushing to `main` branch
+
+#### Method 2: gh-pages branch (Backup)
+If GitHub Actions Pages fails, the workflow will also deploy to a `gh-pages` branch:
+1. Go to **Settings** → **Pages**
+2. Under **Source**, select **Deploy from a branch**
+3. Select `gh-pages` branch and `/ (root)` folder
+4. Save the settings
 
 **Important Notes:**
 - Make sure the repository has proper permissions enabled
-- The `github-pages` environment must exist in repository settings
 - For first-time setup, you may need to manually trigger the workflow
+- The backup method creates a `gh-pages` branch automatically
 
 ### Required Repository Permissions
 
