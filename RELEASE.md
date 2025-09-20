@@ -107,6 +107,12 @@ Each release automatically includes:
 - Check repository visibility settings
 - Ensure GitHub Pages is enabled for the repository
 
+#### "Cannot find any run with github.run_id" error:
+- This usually happens when GitHub Pages environment is not properly configured
+- Go to **Settings** → **Environments** → Create `github-pages` environment if it doesn't exist
+- Make sure the environment has proper permissions (Pages: Write, Actions: Read)
+- Try pushing a new commit to trigger the workflow again
+
 ### Configuration Files
 
 - `.github/workflows/deploy.yml`: GitHub Actions workflow configuration
@@ -122,7 +128,13 @@ To enable GitHub Pages:
 1. Go to your repository **Settings**
 2. Scroll down to **Pages** section
 3. Under **Source**, select **GitHub Actions**
-4. The workflow will automatically deploy to GitHub Pages when triggered
+4. Create a new environment called `github-pages` (if not exists)
+5. The workflow will automatically deploy to GitHub Pages when triggered
+
+**Important Notes:**
+- Make sure the repository has proper permissions enabled
+- The `github-pages` environment must exist in repository settings
+- For first-time setup, you may need to manually trigger the workflow
 
 ### Required Repository Permissions
 
