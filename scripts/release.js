@@ -40,7 +40,7 @@ try {
   
   console.log(`\n✅ Successfully released version ${newVersion}!`);
   console.log(`🏷️  Tag: ${tagName}`);
-  console.log(`🚀 GitLab CI/CD will now build and deploy the release.`);
+  console.log(`🚀 GitHub Actions will now build and deploy the release.`);
   
 } catch (error) {
   console.error('❌ Release failed:', error.message);

@@ -1,23 +1,23 @@
 # Release Guide
 
-This document explains how to release new versions of the React Hello World application using GitLab CI/CD.
+This document explains how to release new versions of the React Hello World application using GitHub Actions.
 
 ## Release Process
 
-### Automatic Releases via GitLab CI/CD
+### Automatic Releases via GitHub Actions
 
-The project is configured with GitLab CI/CD for automated building, testing, and releasing.
+The project is configured with GitHub Actions for automated building, testing, and releasing.
 
 #### How it works:
 
 1. **Create a Git tag** with semantic versioning (e.g., `v1.0.0`, `v1.0.1`, `v2.0.0`)
-2. **Push the tag** to the GitLab repository
-3. **GitLab CI/CD automatically**:
+2. **Push the tag** to the GitHub repository
+3. **GitHub Actions automatically**:
    - Installs dependencies
    - Builds the project with TypeScript and Vite
    - Runs tests (when configured)
-   - Creates a GitLab Release with build artifacts
-   - Deploys to GitLab Pages
+   - Creates a GitHub Release with build artifacts
+   - Deploys to GitHub Pages
 
 ### Manual Release Commands
 
@@ -38,8 +38,8 @@ These scripts will:
 - Bump the version in `package.json`
 - Create a git commit with the version bump
 - Create a git tag (e.g., `v1.0.0`)
-- Push both commit and tag to GitLab
-- Trigger the CI/CD pipeline
+  - Push both commit and tag to GitHub
+  - Trigger the GitHub Actions workflow
 
 ### Manual Git Tag Release
 
@@ -59,26 +59,26 @@ git push origin v1.0.0
 
 ### Release Stages
 
-The GitLab CI/CD pipeline includes these stages:
+The GitHub Actions workflow includes these jobs:
 
 1. **Install**: Install dependencies with caching
 2. **Build**: Compile TypeScript and build with Vite
 3. **Test**: Run tests (when configured)
-4. **Release**: Create GitLab Release with artifacts
-5. **Deploy**: Deploy to GitLab Pages
+4. **Release**: Create GitHub Release with artifacts
+5. **Deploy**: Deploy to GitHub Pages
 
 ### Deployment
 
-- **Main branch**: Automatically deploys to GitLab Pages
+- **Main branch**: Automatically deploys to GitHub Pages
 - **Release tags**: Creates downloadable release artifacts
 - **Staging**: Manual deployment from develop branch
 - **Production**: Manual deployment from release tags
 
-### GitLab Pages URL
+### GitHub Pages URL
 
 Your application will be available at:
 ```
-https://[username].gitlab.io/[project-name]
+https://[username].github.io/[repository-name]
 ```
 
 ### Release Notes
@@ -98,18 +98,36 @@ Each release automatically includes:
 
 #### Release not created:
 - Ensure tag follows semantic versioning (v1.0.0)
-- Check GitLab CI/CD permissions
-- Verify pipeline completed successfully
+- Check GitHub Actions permissions
+- Verify workflow completed successfully
 
 #### Deployment issues:
-- Check GitLab Pages settings
+- Check GitHub Pages settings in repository settings
 - Verify build artifacts exist
 - Check repository visibility settings
+- Ensure GitHub Pages is enabled for the repository
 
 ### Configuration Files
 
-- `.gitlab-ci.yml`: GitLab CI/CD configuration
+- `.github/workflows/deploy.yml`: GitHub Actions workflow configuration
 - `scripts/release.js`: Release automation script
 - `scripts/changelog.js`: Changelog generation
 - `vite.config.ts`: Vite build configuration
 - `package.json`: Project metadata and scripts
+
+### GitHub Pages Setup
+
+To enable GitHub Pages:
+
+1. Go to your repository **Settings**
+2. Scroll down to **Pages** section
+3. Under **Source**, select **GitHub Actions**
+4. The workflow will automatically deploy to GitHub Pages when triggered
+
+### Required Repository Permissions
+
+Make sure your repository has the following permissions enabled:
+- **Actions**: Read and write permissions
+- **Contents**: Read and write permissions  
+- **Pages**: Write permissions
+- **Pull requests**: Read permissions
